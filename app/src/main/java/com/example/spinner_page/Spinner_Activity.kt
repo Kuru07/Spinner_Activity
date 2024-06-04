@@ -18,18 +18,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
 import com.example.spinner_page.whenSlider as whenSlider
-var switchClick = false
-fun switchOn(click : Boolean){
-    switchClick=click
-}
+
 @Composable
 fun SpinnerActivity(){
     var sliderPosition by remember {
         mutableFloatStateOf(3F)
     }
+    var switchClick by remember{
+        mutableFloatStateOf(0F)
+    }
     Column (modifier = Modifier.padding(50.dp)){
         Slider(value = sliderPosition,
-            onValueChange ={sliderPosition=it.roundToInt().toFloat()},
+            onValueChange ={sliderPosition=it.roundToInt().toFloat()
+                switchClick=0F},
             colors = SliderDefaults.colors(
                 thumbColor = Color.Green,
                 activeTrackColor = Color.Blue,
@@ -41,12 +42,12 @@ fun SpinnerActivity(){
         Text(text =sliderPosition.toString() )
 
         Spacer(modifier = Modifier.padding(10.dp))
-        Button(onClick = { switchOn(true)}){
+        Button(onClick = { switchClick++}){
             Text(text = "SPIN")
         }
-        println(switchClick)
-        if(switchClick){
+        if(switchClick>0){
             whenSlider(sliderPosition = sliderPosition)
+
         }
 
     }
