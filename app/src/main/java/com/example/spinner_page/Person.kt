@@ -7,46 +7,52 @@ import androidx.compose.runtime.Composable
 import kotlin.random.Random
 
 @Composable
-fun threePerson(){
+fun threePerson():Int{
     val randomNumber= (1..3).random()
     Column {
         colourChoose(num = randomNumber)
         }
+    return randomNumber
 }
 @Composable
-fun fourPerson(){
+fun fourPerson():Int{
     val randomNumber= (1..4).random()
     Column {
         colourChoose(num = randomNumber)
     }
+    return randomNumber
 }
 @Composable
-fun fivePerson(){
+fun fivePerson():Int{
     val randomNumber= (1..5).random()
     Column {
         colourChoose(num = randomNumber)
     }
+    return randomNumber
 }
 @Composable
-fun sixPerson(){
+fun sixPerson():Int{
     val randomNumber= (1..6).random()
     Column {
         colourChoose(num = randomNumber)
     }
+    return randomNumber
 }
 @Composable
-fun sevenPerson(){
+fun sevenPerson():Int{
     val randomNumber= (1..7).random()
     Column {
         colourChoose(num = randomNumber)
     }
+    return randomNumber
 }
 @Composable
-fun eightPerson(){
+fun eightPerson():Int{
     val randomNumber= (1..8).random()
     Column {
         colourChoose(num = randomNumber)
     }
+    return randomNumber
 }
 @Composable
 fun colourChoose(num:Int){
