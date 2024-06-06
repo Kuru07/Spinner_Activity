@@ -46,15 +46,15 @@ fun SpinnerActivity() {
     fun ccb(int: Int) {
         when (int) {
             1 -> {
-                color_choose = Color.Blue
+                color_choose = colorResource(R.color.blue)
             }
 
             2 -> {
-                color_choose = Color.Red
+                color_choose = colorResource(R.color.red)
             }
 
             3 -> {
-                color_choose = Color.Green
+                color_choose = colorResource(R.color.green)
             }
 
             4 -> {
@@ -66,7 +66,7 @@ fun SpinnerActivity() {
             }
 
             6 -> {
-                color_choose = Color.Yellow
+                color_choose = colorResource(R.color.yellow)
             }
 
             7 -> {
@@ -157,6 +157,7 @@ fun SpinnerActivity() {
                 Button(onClick = { switchClick++ }) {
                     Text(text = "SPIN")
                 }
+                Spacer(modifier = Modifier.padding(15.dp))
 
                 if (switchClick > 0) {
                     ccb(int = PayBill(numberOfPeople = sliderPosition.toInt(), reset = false))
