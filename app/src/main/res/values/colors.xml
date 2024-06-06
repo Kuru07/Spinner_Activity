@@ -15,5 +15,7 @@
     <color name="red">#f15145</color>
     <color name="green">#91c456</color>
     <color name="yellow">#fae849</color>
+    <color name="blueslider">#6CACE7</color>
+    <color name="darkslider">#1A2150</color>
 
 </resources>
