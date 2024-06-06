@@ -45,19 +45,42 @@ fun SpinnerActivity(){
     var color_choose by remember {
         mutableStateOf(Color.White)
     }
+    var isEnable by remember {
+        mutableStateOf(true)
+    }
     @Composable
-    fun ccb(int: Int){
-        when(int){
-            1 ->{ color_choose= Color.Blue}
-            2 ->{ color_choose= Color.Red}
-            3 ->{ color_choose= Color.Green}
-            4 ->{ color_choose= colorResource(R.color.orange)}
-            5 ->{ color_choose= colorResource(R.color.purle)}
-            6 -> { color_choose= Color.Yellow}
-            7 ->{ color_choose= colorResource(R.color.pink)}
-            8 ->{ color_choose= colorResource(R.color.gold)}
+    fun getcolor(int: Int):Color{
+        return when (int) {
+            1 -> Color.Blue
+            2 -> Color.Red
+            3 -> Color.Green
+            4 -> colorResource(R.color.orange)
+            5 -> colorResource(R.color.purle)
+            6 -> Color.Yellow
+            7 -> colorResource(R.color.pink)
+            8 -> colorResource(R.color.gold)
+            else -> Color.White
         }
     }
+    @Composable
+    fun ccb(int: Int){
+        color_choose=getcolor(int = int)
+    }
+    /*@Composable
+    fun ccb(int: Int){
+       color_choose = when(int){
+            1 -> Color.Blue
+            2 -> Color.Red
+            3 -> Color.Green
+            4 -> colorResource(R.color.orange)
+            5 -> colorResource(R.color.purle)
+            6 -> Color.Yellow
+            7 -> colorResource(R.color.pink)
+            8 -> colorResource(R.color.gold)
+            else -> Color.White
+        }
+    }*/
+
         Column(
             modifier = Modifier
                 .padding(50.dp)
@@ -111,29 +134,32 @@ fun SpinnerActivity(){
                 onValueChange = {
                     sliderPosition = it.roundToInt().toFloat()
                     switchClick = 0F
+                    isEnable=true
                     color_choose = Color.White
                 },
                 colors = SliderDefaults.colors(
-                    thumbColor = Color.Green,
-                    activeTrackColor = Color.Blue,
-                    inactiveTrackColor = Color.Red
+                    thumbColor = Color.Black,
+                    activeTrackColor = Color.Black,
+                    inactiveTrackColor = Color.Black
                 ),
                 steps = 4,
                 valueRange = 3F..8F,
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.padding(15.dp))
+            if(switchClick==0F)
             Text(text = sliderPosition.toInt().toString() + " Persons")
-
+            else
+                Text(text = sliderPosition.toInt().toString() + " Persons", color = Color.White)
             Spacer(modifier = Modifier.padding(15.dp))
-            Button(onClick = { switchClick++ }) {
+            Button(onClick = { switchClick++ }, enabled = isEnable ) {
                 Text(text = "SPIN")
             }
 
-            if (switchClick > 0F) {
+            if (switchClick > 0) {
                 number1=whenSlider(sliderPosition = sliderPosition)
-                ccb(int= number1)
-
+                ccb(int= 2)
+                isEnable = false
             }
 
         }
@@ -153,8 +179,6 @@ fun whenSlider(sliderPosition : Float):Int{
     }
     return num
 }
-
-
 
 //        1 -> Blue
 //        2 -> Red

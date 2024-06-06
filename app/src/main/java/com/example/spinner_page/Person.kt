@@ -1,9 +1,12 @@
 package com.example.spinner_page
 
 import android.graphics.Color
+import android.graphics.Paint.Style
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import kotlin.random.Random
 
 @Composable
@@ -54,16 +57,17 @@ fun eightPerson():Int{
     }
     return randomNumber
 }
+
 @Composable
 fun colourChoose(num:Int){
     when(num){
-        1 -> Text(text = "Blue must pay the Bill")
-        2 -> Text(text = "Red must pay the Bill")
-        3 -> Text(text = "Green must pay the Bill")
-        4 -> Text(text = "Orange must pay the Bill")
-        5 -> Text(text = "Purple must pay the Bill")
-        6 -> Text(text = "Yellow  must pay the Bill")
-        7 -> Text(text = "Pink must pay the Bill")
-        8 -> Text(text = "Gold must pay the Bill")
+        1 -> Text(text = "Blue must pay the Bill", color = androidx.compose.ui.graphics.Color.Black,fontWeight = FontWeight.Bold)
+        2 -> Text(text = "Red must pay the Bill", color = androidx.compose.ui.graphics.Color.Black,fontWeight = FontWeight.Bold)
+        3 -> Text(text = "Green must pay the Bill", color = androidx.compose.ui.graphics.Color.Black,fontWeight = FontWeight.Bold)
+        4 -> Text(text = "Orange must pay the Bill", color = androidx.compose.ui.graphics.Color.Black,fontWeight = FontWeight.Bold)
+        5 -> Text(text = "Purple must pay the Bill", color = androidx.compose.ui.graphics.Color.Black,fontWeight = FontWeight.Bold)
+        6 -> Text(text = "Yellow  must pay the Bill", color = androidx.compose.ui.graphics.Color.Black,fontWeight = FontWeight.Bold)
+        7 -> Text(text = "Pink must pay the Bill", color = androidx.compose.ui.graphics.Color.Black,fontWeight = FontWeight.Bold)
+        8 -> Text(text = "Gold must pay the Bill", color = androidx.compose.ui.graphics.Color.Black,fontWeight = FontWeight.Bold)
     }
 }
