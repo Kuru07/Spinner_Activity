@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -51,6 +52,9 @@ fun SpinnerActivity() {
         mutableStateOf(Color.White)
     }
     var targetAngle by remember { mutableStateOf(0f) }
+    var cod by remember {
+        mutableIntStateOf(1)
+    }
 
 
     fun randomAngle(): Float {
@@ -121,7 +125,7 @@ fun SpinnerActivity() {
                                     Box(contentAlignment = Alignment.Center,
                                         modifier = Modifier.align(Alignment.Center)){
                                         Image(
-                                            painter = painterResource(id = R.drawable.pin),
+                                            painter = painterResource(id = R.drawable.point),
                                             modifier = Modifier.align(Alignment.Center),
                                             contentDescription = null
                                         )
@@ -130,35 +134,95 @@ fun SpinnerActivity() {
 
                             }
 
-                            4F -> Image(
-                                painter = painterResource(R.drawable.wheel_4),
-                                contentDescription = null,
-                                modifier = Modifier.padding(0.dp)
-                            )
+                            4F -> {
+                                Box{
+                                    Image(
+                                        painter = painterResource(R.drawable.wheel_4),
+                                        contentDescription = null
+                                    )
+                                    Box(contentAlignment = Alignment.Center,
+                                        modifier = Modifier.align(Alignment.Center)){
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier.align(Alignment.Center),
+                                            contentDescription = null
+                                        )
+                                    }
+                                }
 
-                            5F -> Image(
-                                painter = painterResource(R.drawable.wheel_5),
-                                contentDescription = null,
-                                modifier = Modifier.padding(0.dp)
-                            )
+                            }
 
-                            6F -> Image(
-                                painter = painterResource(R.drawable.wheel_6),
-                                contentDescription = null,
-                                modifier = Modifier.padding(0.dp)
-                            )
+                            5F -> {
+                                Box{
+                                    Image(
+                                        painter = painterResource(R.drawable.wheel_5),
+                                        contentDescription = null
+                                    )
+                                    Box(contentAlignment = Alignment.Center,
+                                        modifier = Modifier.align(Alignment.Center)){
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier.align(Alignment.Center),
+                                            contentDescription = null
+                                        )
+                                    }
+                                }
 
-                            7F -> Image(
-                                painter = painterResource(R.drawable.wheel_7),
-                                contentDescription = null,
-                                modifier = Modifier.padding(0.dp)
-                            )
+                            }
 
-                            8F -> Image(
-                                painter = painterResource(R.drawable.wheel_8),
-                                contentDescription = null,
-                                modifier = Modifier.padding(0.dp)
-                            )
+                            6F -> {
+                                Box{
+                                    Image(
+                                        painter = painterResource(R.drawable.wheel_6),
+                                        contentDescription = null
+                                    )
+                                    Box(contentAlignment = Alignment.Center,
+                                        modifier = Modifier.align(Alignment.Center)){
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier.align(Alignment.Center),
+                                            contentDescription = null
+                                        )
+                                    }
+                                }
+
+                            }
+
+                            7F -> {
+                                Box{
+                                    Image(
+                                        painter = painterResource(R.drawable.wheel_7),
+                                        contentDescription = null
+                                    )
+                                    Box(contentAlignment = Alignment.Center,
+                                        modifier = Modifier.align(Alignment.Center)){
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier.align(Alignment.Center),
+                                            contentDescription = null
+                                        )
+                                    }
+                                }
+
+                            }
+
+                            8F -> {
+                                Box{
+                                    Image(
+                                        painter = painterResource(R.drawable.wheel_8),
+                                        contentDescription = null
+                                    )
+                                    Box(contentAlignment = Alignment.Center,
+                                        modifier = Modifier.align(Alignment.Center)){
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier.align(Alignment.Center),
+                                            contentDescription = null
+                                        )
+                                    }
+                                }
+
+                            }
                         }
                     }
                 }
@@ -172,53 +236,330 @@ fun SpinnerActivity() {
                             animationSpec = (InfiniteRepeatableSpec(
                                     tween(800, easing = LinearEasing))))
                         when (sliderPosition) {
-                            3F -> Image(
-                                painter = painterResource(R.drawable.wheel_3),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .padding(0.dp)
-                                    .rotate(angle)
-                            )
+                            3F -> Box{
+                                Image(
+                                    painter = painterResource(R.drawable.wheel_3),
+                                    contentDescription = null
+                                )
+                                Box(contentAlignment = Alignment.Center,
+                                    modifier = Modifier.align(Alignment.Center)) {
+                                    if (cod == 1)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(130F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 2)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(230F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 3)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(40f),
+                                            contentDescription = null,
+                                        )
+                                }
+                            }
 
-                            4F -> Image(
-                                painter = painterResource(R.drawable.wheel_4),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .padding(0.dp)
-                                    .rotate(angle)
-                            )
+                            4F -> Box{
+                                Image(
+                                    painter = painterResource(R.drawable.wheel_4),
+                                    contentDescription = null
+                                )
+                                Box(contentAlignment = Alignment.Center,
+                                    modifier = Modifier.align(Alignment.Center)) {
+                                    if (cod == 1)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(130F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 2)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(230F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 3)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(280f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 4)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(20f),
+                                            contentDescription = null,
+                                        )
+                                }
+                            }
 
-                            5F -> Image(
-                                painter = painterResource(R.drawable.wheel_5),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .padding(0.dp)
-                                    .rotate(angle)
-                            )
+                            5F -> Box{
+                                Image(
+                                    painter = painterResource(R.drawable.wheel_5),
+                                    contentDescription = null
+                                )
+                                Box(contentAlignment = Alignment.Center,
+                                    modifier = Modifier.align(Alignment.Center)) {
+                                    if (cod == 1)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(130F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 2)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(210F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 3)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(280f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 4)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(350f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==5)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(40f),
+                                            contentDescription = null,
+                                        )
+                                }
+                            }
 
-                            6F -> Image(
-                                painter = painterResource(R.drawable.wheel_6),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .padding(0.dp)
-                                    .rotate(angle)
-                            )
+                            6F -> Box{
+                                Image(
+                                    painter = painterResource(R.drawable.wheel_6),
+                                    contentDescription = null
+                                )
+                                Box(contentAlignment = Alignment.Center,
+                                    modifier = Modifier.align(Alignment.Center)) {
+                                    if (cod == 1)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(130F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 2)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(190F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 3)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(250f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 4)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(310f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==5)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(10f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==6)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(60f),
+                                            contentDescription = null,
+                                        )
+                                }
+                            }
 
-                            7F -> Image(
-                                painter = painterResource(R.drawable.wheel_7),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .padding(0.dp)
-                                    .rotate(angle)
-                            )
 
-                            8F -> Image(
-                                painter = painterResource(R.drawable.wheel_8),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .padding(0.dp)
-                                    .rotate(angle)
-                            )
+                            7F -> Box{
+                                Image(
+                                    painter = painterResource(R.drawable.wheel_7),
+                                    contentDescription = null
+                                )
+                                Box(contentAlignment = Alignment.Center,
+                                    modifier = Modifier.align(Alignment.Center)) {
+                                    if (cod == 1)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(130F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 2)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(175F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 3)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(200f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 4)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(270f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==5)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(330f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==6)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(20f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==7)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(60f),
+                                            contentDescription = null,
+                                        )
+                                }
+                            }
+
+                            8F -> Box{
+                                Image(
+                                    painter = painterResource(R.drawable.wheel_8),
+                                    contentDescription = null
+                                )
+                                Box(contentAlignment = Alignment.Center,
+                                    modifier = Modifier.align(Alignment.Center)) {
+                                    if (cod == 1)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(115F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 2)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(165F),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 3)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(200f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod == 4)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(250f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==5)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(280f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==6)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(345f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==7)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(20f),
+                                            contentDescription = null,
+                                        )
+                                    if (cod==8)
+                                        Image(
+                                            painter = painterResource(id = R.drawable.point),
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .rotate(60f),
+                                            contentDescription = null,
+                                        )
+                                }
+                            }
 
                         }
                         LaunchedEffect(targetAngle) {
@@ -247,11 +588,6 @@ fun SpinnerActivity() {
                     thumb = {
                         Image(painterResource(id = R.drawable.pin),"contentDescription")
                     },
-//                        Icon(
-//                            imageVector = Icons.Filled.Favorite,
-//                            contentDescription = null,
-//                            modifier = Modifier.size(ButtonDefaults.IconSize)
-//                        )                    },
                     steps = 4,
                     valueRange = 3F..8F,
                     modifier = Modifier
@@ -267,9 +603,9 @@ fun SpinnerActivity() {
                     switchClick++ }) {
                     Text(text = "SPIN")
                 }
-
                 if (switchClick > 0) {
-                    ccb(int = PayBill(numberOfPeople = sliderPosition.toInt(), reset = false))
+                    cod=PayBill(numberOfPeople = sliderPosition.toInt(), reset = false)
+                    ccb(int = cod)
                 }
 
             }
