@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -28,12 +30,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlin.math.roundToInt
 
 
@@ -113,6 +118,12 @@ fun SpinnerActivity() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Text(
+                    modifier = Modifier.padding(horizontal = 0.dp, vertical = 25.dp),
+                    text = "EACH PERSON SHOULD PICK A COLOUR",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp
+                    )
                 Box(modifier = Modifier.padding(0.dp)){
                     if (switchClick == 0F){
                         when (sliderPosition) {
@@ -227,14 +238,14 @@ fun SpinnerActivity() {
                     }
                 }
                 if (switchClick>0f) {
-                    @Composable
-                    fun rotationAnimation() {
-                        val infiniteTransition = rememberInfiniteTransition()
-                        val angle by infiniteTransition.animateFloat(
-                            initialValue = 0f,
-                            targetValue = 360f,
-                            animationSpec = (InfiniteRepeatableSpec(
-                                    tween(800, easing = LinearEasing))))
+//                    @Composable
+//                    fun rotationAnimation() {
+//                        val infiniteTransition = rememberInfiniteTransition()
+//                        val angle by infiniteTransition.animateFloat(
+//                            initialValue = 0f,
+//                            targetValue = 360f,
+//                            animationSpec = (InfiniteRepeatableSpec(
+//                                    tween(800, easing = LinearEasing))))
                         when (sliderPosition) {
                             3F -> Box{
                                 Image(
@@ -562,15 +573,15 @@ fun SpinnerActivity() {
                             }
 
                         }
-                        LaunchedEffect(targetAngle) {
-                            if (angle == targetAngle) {
-                                switchClick = 0F // Reset switchClick to stop animation
-                                color_choose = Color.White // Reset color for next spin
-                                sliderPosition=0f
-                            }
-                        }
-                    }
-                    rotationAnimation()
+//                        LaunchedEffect(targetAngle) {
+//                            if (angle == targetAngle) {
+//                                switchClick = 0F // Reset switchClick to stop animation
+//                                color_choose = Color.White // Reset color for next spin
+//                                sliderPosition=0f
+//                            }
+//                        }
+
+//                    rotationAnimation()
                 }
                 Spacer(modifier = Modifier.padding(15.dp))
                 Slider(
@@ -594,13 +605,16 @@ fun SpinnerActivity() {
                         .fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.padding(15.dp))
-                Text(text = sliderPosition.toInt().toString() + " Persons")
+                Text(text = sliderPosition.toInt().toString() + " Persons", fontSize = 20.sp, fontWeight = FontWeight.Bold)
 
                 Spacer(modifier = Modifier.padding(15.dp))
                 
-                Button(onClick = {
+                Button(
+                    onClick = {
                     targetAngle = randomAngle()
-                    switchClick++ }) {
+                    switchClick++ },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Black) )
+                    {
                     Text(text = "SPIN")
                 }
                 if (switchClick > 0) {
